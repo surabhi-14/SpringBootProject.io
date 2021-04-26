@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<title>Home</title>
+</head>
+<body>
+
+	<section>
+		<div class="container body justify-content-center ">
+			<div class="main_container d-flex justify-content-center">
+				<div class="table-header shadow-lg p-2">
+					<div class="card-header heading">
+						<h1 class="text-center text-white">Your History</h1>
+					</div>
+					<div class="card-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">MyOrderId</th>
+									<th scope="col">Amount</th>
+									<th scope="col">Receipt</th>
+									<th scope="col">Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="c : ${myOrder}">
+									<td th:text="${c. myOrderId}"></td>
+									<td th:text="${c. amount}"></td>
+									<td th:text="${c. receipt}"></td>
+									<td th:text="${c. status}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

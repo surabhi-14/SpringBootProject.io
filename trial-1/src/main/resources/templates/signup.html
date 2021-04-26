@@ -1,0 +1,92 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+	<title>Home</title>
+
+</head>
+
+<body>
+
+	<section>
+		<div class="signup-form justify-content-center container">
+			<div class="d-flex justify-content-center">
+				<div class="card shadow-lg p-2">
+					<div class="card-header heading">
+						<h2>Create Account</h2>
+						<h5>Fill the form to register</h5>
+					</div>
+					<div class="card-body">
+						<form action="" th:action="@{/do_register}" method="post" th:object="${customer}">
+							<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert"
+								role="alert">
+								<p th:text="${session.message.content}"></p>
+								<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+							</div>
+							<div class="form-group input-group d-flex flex-column">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fa fa-user"></i>
+									</span>
+
+									<input type="text" class="form-control" name="customerName" placeholder="Enter User Name"
+										required th:value="${customer.customerName}"
+										th:classappend="${#fields.hasErrors('customerName') ? 'is-invalid':''}">
+									<div class="invalid-feedback" th:each="e:${#fields.errors('customerName')}"
+										th:text="${e}">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group input-group d-flex flex-column">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fa fa-envelope"></i>
+									</span>
+									<input type="email" class="form-control" name="email" placeholder="Enter Email (example@gmail.com)"
+										required th:value="${customer.email}">
+								</div>
+							</div>
+							<div class="form-group input-group d-flex flex-column">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fa fa-key"></i>
+									</span>
+									<input type="password" placeholder="Enter the Password" class="form-control"
+										name="password" required>
+								</div>
+							</div>
+							<div class="form-group input-group d-flex flex-column">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fa fa-phone"></i>
+									</span>
+									<input type="number" class="form-control" placeholder="Enter Mobile Number" name="phoneNumber" required
+										th:value="${customer.phoneNumber}">
+								</div>
+							</div>
+
+							<div class="form-group text-center">
+								<label class="form-check-label"><input type="checkbox" required name="agreement"> I
+									accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+							</div>
+							<div class="d-flex justify-content-center">							
+								<button type="submit" class="btn btn-danger m-2">Sign Up</button>
+								<button type="reset" class="btn btn-warning text-white m-2">Reset</button>
+								
+							</div>
+						</form>
+						<div class="card-footer">
+							<div class="text-center small footer">Already have an account? <a th:href="@{/signin}">LogIn
+									here</a>
+							</div>
+						</div>
+					</div>
+
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+	<title>OTP Form</title>
+</head>
+
+<body>
+
+	<section>
+		<div class="signup-form justify-content-center container">
+			<div class="d-flex justify-content-center">
+				<div class="card shadow-lg p-2">
+					<div class="card-header heading">
+						<h2>OTP Form</h2>
+					</div>
+					<div class="card-body">
+
+						<form th:action="@{/verify-otp}" method="post">
+
+							<!-- message box -->
+							<div th:if="${session.message}" class="container">
+								<div clas="alert alert-danger my-2 text-center" role="alert">
+									<span th:text="${session.message}"></span>
+								</div>
+								<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+							</div>
+							<!--message box closed -->
+
+							<div class="form-group">
+								<div class="alert alert-success" role="alert">We have sent
+									OTP to your EMAIL!! Thankyou....</div>
+								<label>Enter OTP</label> <input name="otp" type="text" class="form-control" required>
+							</div>
+
+							<div class="d-flex justify-content-center">
+								<button type="submit" class="btn bg-warning text-white">Verify</button>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+
+</html>
