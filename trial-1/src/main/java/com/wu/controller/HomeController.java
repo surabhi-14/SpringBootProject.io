@@ -40,7 +40,6 @@ public class HomeController {
 		model.addAttribute("title","Payment Manager");
 		return "home";
 	}
-	
 	//handler for about
 	@RequestMapping("/about")
 	public String about(Model model) 

@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.wu.model.Customer;
-
+//happy
 
 @Repository
 public interface CustomerRepository  extends JpaRepository<Customer, Integer>{
