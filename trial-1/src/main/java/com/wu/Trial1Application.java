@@ -11,10 +11,6 @@ public class Trial1Application {
 	}
 	public static String start() {
 		System.out.println("start");
-		int x= 10;
-		if(x==1) {
-			System.out.println("1");
-		}
 		return "start";
 	}
 	
